@@ -1,0 +1,34 @@
+PIXMAP2PPM
+
+    `pixmap2ppm` is a simple program for visualizing the image data of pixmaps
+    stored on the X11 server.
+
+EXAMPLE - SAVE WALLPAPER
+
+    To get a ppm of the wallpaper of your X server, execute:
+
+        $ pixmap2ppm -o wallpaper.ppm 0x4a00001
+
+    Where `0x4a00001` is the value of a property on the root window with one
+    of these names:
+
+      - _XROOTPMAP_ID
+      - ESETROOT_PMAP_ID
+      - _XSETROOT_ID
+
+    If you have it installed, you can get this value with the `xprop` program:
+
+        $ xprop -root _XROOTPMAP_ID
+
+EXAMPLE - MAKE SCREENSHOT
+
+    To get a ppm of your current root window (a 'screenshot'), execute:
+
+        $ pixmap2ppm -o screenshot.ppm 0x1d9
+
+    Where `0x1d9` is the XID of the root window.
+
+    You can use the `xwininfo` program to find the root window XID:
+
+        $ xwininfo -root
+
